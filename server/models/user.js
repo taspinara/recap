@@ -10,7 +10,6 @@ const sequelize = new Sequelize(DB_URL);
 const User = sequelize.define('User', {
     user_name: {
         type: DataTypes.STRING,
-        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
@@ -18,6 +17,7 @@ const User = sequelize.define('User', {
     }
 }, {
     tableName: "user",
+    timestamps: false,
     underscored: true
 })
 

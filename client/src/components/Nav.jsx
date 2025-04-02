@@ -4,6 +4,7 @@ const Nav = () => {
   return (
     <nav>
         <Link to={`/`} >Home</Link>
+        <br />
         <Link to={`/signup`} >Sign Up</Link>
     </nav>
   )
