@@ -1,5 +1,6 @@
 import express from 'express';
 import { config } from 'dotenv';
+import cors from 'cors';
 
 import authRouter from './router/authRouter.js'
 
@@ -8,6 +9,7 @@ config();
 const port = process.env.PORT
 
 const app = express();
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
