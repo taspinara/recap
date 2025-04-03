@@ -1,19 +1,29 @@
 import express from 'express';
 import { config } from 'dotenv';
+import cors from 'cors';
+
+import authRouter from './router/authRouter.js';
+import userRouter from './router/usersRouter.js';
+
 config();
 
-const port = process.env.PORT
+const PORT = process.env.PORT
 
 const app = express();
+app.use(cors({ origin: '*' }));
+app.use(express.json());
 
 app.get("/", (req, res) => {
     try {
-        res.send('Hello world!!')
+        res.send('Hello from the server!!')
     } catch (err) {
-        console.error(err.message);
+        console.log(err.message);
     }
-})
+});
 
-app.listen(port, () => {
-    console.log(`Server is running on ${port}`);
+app.use('/auth', authRouter);
+app.use('/users', userRouter);
+
+app.listen(PORT, () => {
+    console.log(`Server is 🏃 on ${PORT}`);
 })
